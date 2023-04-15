@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "../../../WorkRepositories/radiusApp"
+		},
+		{
+			"path": "../../../WorkRepositories/js-library-xcali"
+		},
+		{
+			"path": "../../../WorkRepositories/radius-mortgage"
+		},
+		{
+			"path": "../../../Chilliflix/frontend/chilliflix-frontend"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../Converse"
+		},
+		{
+			"path": "../../../WorkRepositories/blink"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "radiusApp",
+		"diffEditor.wordWrap": "on"
+	}
+}
