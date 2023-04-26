@@ -1,17 +1,20 @@
-function powerSet(arr, ref = [], result = []) {
-  debugger
-  if(ref.length === arr.length) {
-    result.push(ref)
-    return result
+function powerset(arr) {
+  let result = []
+
+  function compute(candidate, idx) {
+    result.push([...candidate])
+
+    for(let index = idx; index < arr.length; index += 1) {
+      candidate.push(arr[index])
+      compute(candidate, index + 1)
+      candidate.pop()
+    }
   }
 
-  for(let index = 0; index < arr.length; index += 1) {
-    result.push(ref)
-    ref.push(arr[index])
-    powerSet(arr, ref, result)
-  }
+  compute([], 0)
+
   return result
 }
 
-let ans = powerSet([1])
-console.log(ans)
+const test1 = [1]
+console.log(powerSet(test1))
