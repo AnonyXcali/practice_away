@@ -16,17 +16,19 @@ function phoneNumberMnemonics(phoneNumber) {
   let result = []
 
   function compute(input, idx) {
-    if(input.length === phoneNumber.length) {
+    if(input.length ===  String(phoneNumber).length) {
       result.push(input)
       return
     }
 
-    for(let index = idx; index < phoneNumber.length; index +=1) {
-      for(let jIndex = 0; jIndex < numpad[phoneNumber[index]].length; jIndex += 1) {
-        input += numpad[phoneNumber[index]][jIndex]
-        compute(input, index + 1)
-        input = input.substring(0, input.length - 1) 
-      }
+    let key = String(phoneNumber).charAt(idx)
+
+    if(!key) return
+
+    for(let index = 0; index < numpad[key].length; index += 1) {
+      input +=  numpad[key][index]
+      compute(input, idx + 1)
+      input = input.substring(0, input.length - 1) 
     }
     
   }
@@ -35,3 +37,6 @@ function phoneNumberMnemonics(phoneNumber) {
     
   return result
 }
+
+const test = phoneNumberMnemonics(2345)
+console.log(test)
