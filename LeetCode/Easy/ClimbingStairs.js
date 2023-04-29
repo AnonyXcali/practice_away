@@ -19,4 +19,7 @@ var climbStairs = function(n) {
       arr.push(arr[i - 2] + arr[i -1])
   }
   return arr[n-1]
-};
+}
+
+const test = climbStairs(4)
+console.log(test)

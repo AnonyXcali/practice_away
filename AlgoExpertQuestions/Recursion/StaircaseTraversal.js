@@ -6,12 +6,9 @@ function staircaseTraversal(height, maxSteps){
     pS.push(index)
   }
 
-  console.log(pS)
 
   function compute(state, rH) {
-    console.log(state, rH)
     if(state === height) {
-      console.log("added", state, rH)
       count += 1
       return
     }
@@ -21,7 +18,6 @@ function staircaseTraversal(height, maxSteps){
         state += pS[i]
         compute(state, rH - pS[i])
       } else {
-        console.log("skipped", state, rH)
         continue
       }
 
@@ -35,5 +31,5 @@ function staircaseTraversal(height, maxSteps){
   return count
 }
 
-const possibleSteps = staircaseTraversal(4, 4)
+const possibleSteps = staircaseTraversal(10, 2)
 console.log(possibleSteps)
