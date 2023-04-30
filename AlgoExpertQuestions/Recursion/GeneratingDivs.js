@@ -9,7 +9,9 @@ function generateDivTags(numberOfTags) {
     }
 
     if(oT > 0) {
-      compute(str + "<div>", oT - 1, cT)
+      let temp = str
+      temp += "<div>"
+      compute(temp, oT - 1, cT)
     }
     
     if(oT < cT) {
@@ -17,7 +19,9 @@ function generateDivTags(numberOfTags) {
     }
   }
 
-  compute("", numberOfTags, numberOfTags)
+  let str = ""
+
+  compute(str, numberOfTags, numberOfTags)
   
   return result;
 }
