@@ -16,7 +16,7 @@ function phoneNumberMnemonics(phoneNumber) {
   let result = []
 
   function compute(input, idx) {
-    if(input.length ===  String(phoneNumber).length) {
+    if(input.length === String(phoneNumber).length) {
       result.push(input)
       return
     }
