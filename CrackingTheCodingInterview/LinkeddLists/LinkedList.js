@@ -157,9 +157,6 @@ class LinkedList {
 
 function main() {
   let ll = new LinkedList()
-  let str = "Tact Coast"
-
-  console.log(sol.frequencyCountMethod_optimized(str))
 }
 
 main()
