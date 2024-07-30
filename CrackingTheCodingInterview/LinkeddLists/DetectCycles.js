@@ -1,6 +1,7 @@
 /**
  * Q)2.6
- * Palindrome: Implement a function to check if a linked list is a palindrome
+ * Detect Cycle: Given a circular linked list, implement an algorithm that returns
+ * the node at the beginning of the loop.
  */
 
 class Node {
@@ -96,18 +97,80 @@ class LinkedList {
     return this.head
   }
 
+  createCycleAtPos(pos) {
+    let positionForLoop = this.head
+    let tail = this.head
+
+    while(tail.next) {
+      tail = tail.next
+    }
+
+    while(positionForLoop) {
+      if(positionForLoop.value === pos) {
+        break
+      }
+      positionForLoop = positionForLoop.next
+    }
+
+    tail.next = positionForLoop
+
+    return this.head
+  }
+}
+
+class Solution {
+  storeReferences(ll) {
+    let current = ll.head
+    let references = new Set()
+
+    while(current.next) {
+      references.add(current)
+      current = current.next
+    }
+    return references
+  }
+
+  floydCycleDetectionAlgorithm(ll) {
+    let pointerA = ll.head
+    let pointerB = ll.head
+
+    while(pointerB && pointerB.next) {
+      pointerA = pointerA.next
+      pointerB = pointerB.next.next
+      if(pointerA === pointerB) {
+        console.log("Cycle exists")
+        break
+      }
+    }
+
+    if(pointerA === null || pointerB.next === null) {
+      return null
+    }
+
+    pointerA = ll.head
+
+    while(pointerA !== pointerB) {
+      pointerA = pointerA.next
+      pointerB = pointerB.next
+    }
+
+    return pointerB
+  }
 }
 
 
 function main() {
   let ll = new LinkedList()
-  ll.add(1)
-  ll.add(2)
-  ll.add(2)
-  ll.add(1)
-  //console.log(ll.reverse())
-  const answer = ll.palindrome()
-  console.log("The linked is palindrome", answer)
+  ll.add("A")
+  ll.add("B")
+  ll.add("C")
+  ll.add("D")
+  ll.add("E")
+  ll.createCycleAtPos("C")
+  let sol = new Solution()
+  let answer = sol.floydCycleDetectionAlgorithm(ll)
+  console.log(answer)
+  
 }
 
 main()

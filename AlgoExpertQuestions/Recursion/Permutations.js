@@ -1,4 +1,5 @@
 function getPermutations(array) {
+  debugger
   if(array.length === 0) {
     return array
   }
@@ -29,6 +30,6 @@ function getPermutations(array) {
 
 }
 
-let test = [1,2,3]
+let test = ["(", ")"]
 let perms = getPermutations(test)
 console.log(perms)
