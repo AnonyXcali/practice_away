@@ -68,11 +68,6 @@ class MergeSort {
 
 class BinarySearch {
   binarySearch(arr, target, left, right) {
-    if(arr.length < 2) {
-      if(arr[0] === target) return "Element found at 0"
-
-      return "Element doesn't exits"
-    }
 
     let mid = Math.floor((left + right) / 2)
 
@@ -83,6 +78,24 @@ class BinarySearch {
     } else {
       return this.binarySearch(arr, target, left, mid - 1)
     }
+  }
+
+  binarySearch_iterative(nums, target) {
+    let leftPointer = 0
+    let rightPointer = nums.length - 1
+    
+    while(leftPointer <= rightPointer) {
+      let mid = Math.floor((leftPointer + rightPointer) / 2)
+      if(nums[mid] === target) return mid
+      
+      if(target > nums[mid]) {
+        leftPointer = mid + 1
+      } else {
+        rightPointer = mid - 1
+      }
+    }
+
+    return -1
   }
 }
 
@@ -139,12 +152,12 @@ class LinkedList {
 
 
 function main() {
-  let array = [22, 11, 100, 1000, 29, 21, 1, 55, 12]
+  let array =  [10, 11, 12, 13]
   const ms = new MergeSort()
   const bs = new BinarySearch()
   let sorted = ms.mergeSort(array)
   console.log("Sorted ==>", sorted)
-  console.log(bs.binarySearch(sorted, 29, 0, sorted.length))
+  console.log(bs.binarySearch_iterative(sorted, 10, 0, sorted.length))
   
   // let ll = new LinkedList()
   // for(let i = 0; i < sorted.length; i+=1) {

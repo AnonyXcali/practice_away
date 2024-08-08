@@ -25,31 +25,18 @@ class Solution {
     //because the root node itself is a goodNode
     if(!root.left && !root.right) return 1
 
-    //if only right node exists
-    if(!root.left && root.right) {
-      return root.val < root.right.val ? 2 : 1
-    }
-
-    //if only left node exists
-    if(!root.right && root.left) {
-      return root.val < root.left.val ? 2 : 1
-    }
-
-    const traverse = (node, past = []) => {
+    const traverse = (node, maxVal) => {
       if(node) {
-        let filtered = past.filter(item => item >= node.val) || []
-        if(filtered.length <= 0) {
+        if(node.val >= maxVal) {
           goodNodeCount += 1
+          maxVal = node.val
         }
-        if(node.left || node.right) {
-          past.push(node.val)
-        }
-        traverse(node.left, past)
-        traverse(node.right, past)
+        traverse(node.left, maxVal)
+        traverse(node.right, maxVal)
       }
     }
 
-    traverse(node)
+    traverse(root, root.val)
 
     return goodNodeCount
   }

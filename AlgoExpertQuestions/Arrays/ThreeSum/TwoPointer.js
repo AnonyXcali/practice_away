@@ -54,6 +54,6 @@ function threeNumberSum(arr, target) {
   return result //o(n)^2
 }
 
-let arr = [12, 3, 1, 2, -6, 5, -8, 6]
+let arr = [-1,0,1,2,-1,-4]
 let target = 0
 console.log(threeNumberSum(arr, target).toString())
