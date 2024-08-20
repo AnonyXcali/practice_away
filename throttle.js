@@ -34,3 +34,36 @@ let throttled = (fn, limit) => {
   }
 
 }
+
+const _throttle = (fn, delay) => {
+  let lastTime = 0;
+  console.log( 'called Throttle immediately');
+  return (...args) => {
+    const now = new Date().getTime();
+    console.log("check = ", now, lastTime, now - lastTime, now - lastTime < delay)
+    if (now - lastTime < delay) return;
+    lastTime = now;
+    fn(...args) ;
+  }
+}
+
+
+const func = () => {
+  console.log("click")
+}
+
+
+const thrittled = throttle(func, 2000)
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+thrittled()
+
