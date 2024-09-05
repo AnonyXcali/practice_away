@@ -33,9 +33,7 @@ class Solution {
 
     if(left) {
       current.next = left
-    }
-
-    if(right) {
+    }else if(right) {
       current.next = right
     }
 

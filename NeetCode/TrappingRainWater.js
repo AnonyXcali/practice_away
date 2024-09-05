@@ -23,13 +23,16 @@ class Solution {
     for (let i = 0; i < height.length; i += 1) {
       maxLeftValues[i] = maxLeft
       maxLeft = Math.max(height[i], maxLeft)
-      console.log(height[i], maxLeft)
     }
+
+    console.log(maxLeftValues)
 
     for(let i = height.length - 1; i >= 0; i -= 1) {
       maxRightValues[i] = maxRight
       maxRight = Math.max(height[i], maxRight)
     }
+    console.log(maxRightValues)
+
 
     for(let i = 0; i < height.length; i += 1) {
       minValues[i] = Math.min(maxLeftValues[i], maxRightValues[i])
@@ -66,15 +69,39 @@ class Solution {
 
     return result
   }
+
+  trap_stack(height) {
+    if(!height) return 0
+
+    let stack = []
+    let current = 0
+    let result = 0
+
+    while(current < height.length) {
+      while(stack.length > 0 && height[current] > height[stack[stack.length - 1]]) {
+        let top = stack[stack.length - 1]
+        stack.pop()
+
+        if(stack.length <= 0) break
+        let distance = current - stack[stack.length -1] - 1
+        let boundedheight = Math.min(height[current], height[stack[stack.length - 1]]) - height[top]
+        result += distance * boundedheight
+      }
+      stack.push(current++)
+    }
+
+    return result
+  }
 }
 
 
 function main() {
   let test = [0,2,0,3,1,0,1,3,2,1]
   let nc = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+  const lc = [0,1,0,2,1,0,1,3,2,1,2,1]
   let heights = [4,2,0,3,2,5]
   let sol = new Solution()
-  let ans = sol.trap_optimized(heights)
+  let ans = sol.trap_stack(lc)
   console.log(ans)
 }
 
