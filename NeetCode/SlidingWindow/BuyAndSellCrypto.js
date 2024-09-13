@@ -58,10 +58,10 @@ class Solution {
 }
 
 function main() {
-  let test = [10,8,7,5,2]
-  let market = [5, 1, 5, 6, 7, 1 ,10]
+  let test = [5, 1, 10]
+  let market = [1,2,3,4,5,6,7,8,9,10]
   let sol = new Solution()
-  let ans = sol.maxProfit_nc(market)
+  let ans = sol.maxProfit(test)
   console.log(ans)
 }
 
