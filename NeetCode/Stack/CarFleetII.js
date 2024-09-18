@@ -10,7 +10,7 @@ var getCollisionTimes = function(cars) {
   for(let i = cars.length - 1; i >= 0; i -= 1) {
     //this is for handling later cases
     while(stack.length > 0 && result[stack[stack.length - 1]] >= 0) {
-      let nextCar = stack[stack.length -1]
+      let nextCar = stack[stack.length - 1]
       let timeToCatchNextCar = calculate(cars[i], cars[nextCar])
       let timeToCatchFutureCar = result[nextCar]
       if(timeToCatchNextCar > 0 && timeToCatchNextCar <= timeToCatchFutureCar) {
