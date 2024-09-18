@@ -27,6 +27,8 @@ class Solution {
 
     //now map them based on time formula for given remaining distance and speed
     let time = sortedDescending.map(([pos, speed]) => (target - pos) / speed)
+
+    //create a new stack
     let stack = new Stack()
      
     //iterate over the time array and add to stock
