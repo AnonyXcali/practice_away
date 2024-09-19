@@ -34,17 +34,53 @@ class Graph {
             console.log(`${node} => ${edgeList}`);
         }
     }
+    dfs(start) {
+        let visited = new Set();
+        let stack = [start];
+        while (stack.length) {
+            let curr = stack.pop() || "";
+            if (curr && !visited.has(curr)) {
+                console.log(curr);
+                visited.add(curr);
+                let edges = this.adjacencyList.get(curr);
+                if (edges) {
+                    for (let edge of edges) {
+                        if (!visited.has(edge.to.value)) {
+                            stack.push(edge.to.value);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    bfs(start) {
+        let visited = new Set();
+        let queue = [];
+        queue.unshift(start);
+        visited.add(start);
+        while (queue.length) {
+            let popped = queue.shift();
+            console.log(popped);
+            let edges = this.adjacencyList.get(popped) || [];
+            for (let edge of edges) {
+                if (!visited.has(edge.to.value)) {
+                    queue.push(edge.to.value);
+                    visited.add(edge.to.value);
+                }
+            }
+        }
+    }
 }
 const graph = new Graph();
-graph.addNode('A');
 graph.addNode('A');
 graph.addNode('B');
 graph.addNode('C');
 graph.addNode('D');
-// Adding edges
+graph.addNode('E');
 graph.addEdge('A', 'B');
 graph.addEdge('A', 'C');
 graph.addEdge('B', 'D');
-graph.addEdge('C', 'D');
+graph.addEdge('C', 'E');
 // Print the adjacency list representation of the graph
-graph.printGraph();
+//graph.printGraph();
+graph.bfs("A");

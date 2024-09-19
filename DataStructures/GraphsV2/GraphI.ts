@@ -79,7 +79,26 @@ class Graph {
         }
       }
     }
+  }
 
+  bfs(start: string) {
+    let visited = new Set<string>()
+    let queue: string[] = []
+    queue.unshift(start)
+    visited.add(start)
+
+    while(queue.length) {
+      let popped = queue.shift()!
+      console.log(popped)
+      let edges = this.adjacencyList.get(popped) || []
+
+      for(let edge of edges) {
+        if(!visited.has(edge.to.value)) {
+          queue.push(edge.to.value)
+          visited.add(edge.to.value)
+        }
+      }
+    }
   }
 }
 
@@ -90,13 +109,14 @@ graph.addNode('A');
 graph.addNode('B');
 graph.addNode('C');
 graph.addNode('D');
+graph.addNode('E');
 
-// Adding edges
 graph.addEdge('A', 'B');
 graph.addEdge('A', 'C');
 graph.addEdge('B', 'D');
-graph.addEdge('C', 'D');
+graph.addEdge('C', 'E');
+
 
 // Print the adjacency list representation of the graph
-graph.printGraph();
-graph.dfs("A")
+//graph.printGraph();
+graph.bfs("A")

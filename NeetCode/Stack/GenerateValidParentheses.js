@@ -34,4 +34,4 @@ class Solution {
 
 // Example usage
 let sol = new Solution();
-console.log(sol.generateParentheses(3));
+console.log(sol.generateParentheses(5));
